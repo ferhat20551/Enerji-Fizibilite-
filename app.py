@@ -60,7 +60,7 @@ santral_tipi = st.radio(
 )
 is_ges = "GES" in santral_tipi
 
-# --- DİNAMİK ŞEFFAF ARKA PLAN VE MODERN GLASSMORPHISM CSS ---
+# --- DİNAMİK ŞEFFAF ARKA PLAN VE KALICI KARANLIK MOD CSS ---
 bg_url = (
     "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80"
     if is_ges else
@@ -70,20 +70,38 @@ accent_color = "#f59e0b" if is_ges else "#38bdf8"
 
 st.markdown(f"""
 <style>
+    :root {{
+        color-scheme: dark;
+    }}
     .stApp {{
-        background: linear-gradient(rgba(11, 17, 32, 0.82), rgba(15, 23, 42, 0.88)), url("{bg_url}");
+        background: linear-gradient(rgba(11, 17, 32, 0.85), rgba(15, 23, 42, 0.90)), url("{bg_url}");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        color: #f8fafc;
+        color: #f8fafc !important;
     }}
     [data-testid="stSidebar"] {{
-        background-color: rgba(15, 23, 42, 0.88) !important;
+        background-color: rgba(15, 23, 42, 0.94) !important;
         backdrop-filter: blur(12px);
         border-right: 1px solid rgba(255, 255, 255, 0.12);
     }}
+    label, p, span, h1, h2, h3, h4, .stMarkdown {{
+        color: #f8fafc !important;
+    }}
+    input, textarea, select,
+    div[data-baseweb="input"] > div,
+    div[data-baseweb="select"] > div {{
+        background-color: #1e293b !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }}
+    div[data-testid="stExpander"] {{
+        background-color: rgba(30, 41, 59, 0.78) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 10px;
+    }}
     div[data-testid="stMetric"] {{
-        background: rgba(30, 41, 59, 0.72);
+        background: rgba(30, 41, 59, 0.80);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.14);
         border-top: 3px solid {accent_color};
@@ -100,18 +118,21 @@ st.markdown(f"""
         font-weight: 700 !important;
     }}
     .stTabs [data-baseweb="tab-list"] {{
-        background-color: rgba(30, 41, 59, 0.65);
+        background-color: rgba(30, 41, 59, 0.75);
         border-radius: 10px;
         padding: 4px;
     }}
     .stTabs [data-baseweb="tab"] {{
-        color: #e2e8f0;
+        color: #e2e8f0 !important;
         border-radius: 8px;
     }}
     .stTabs [aria-selected="true"] {{
         background-color: {accent_color} !important;
         color: #0f172a !important;
         font-weight: 700;
+    }}
+    .stTabs [aria-selected="true"] p {{
+        color: #0f172a !important;
     }}
 </style>
 """, unsafe_allow_html=True)
